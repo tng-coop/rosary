@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosary Steps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .step.highlight {
+            background-color: #f0f8ff;
+            border-color: #00f;
+        }
+        .lang-switch {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <label for="language">Choose Language:</label>
+        <select id="language">
+            <option value="English">English</option>
+            <option value="Japanese">Japanese</option>
+        </select>
+    </div>
+    <div id="rosaryContainer"></div>
+    <script src="rosary.js"></script>
+</body>
+</html>
