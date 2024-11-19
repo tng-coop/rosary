@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return rosaryData.rosary.mysteries.find(mystery => mystery.days.includes(today));
     }
 
-    // Render the Rosary steps with today's mysteries inserted
     function renderRosary() {
         if (!rosaryData || !rosaryData.rosary) {
             console.error('Rosary data is not available');
             return;
         }
-
+    
         rosaryContainer.innerHTML = '';
         const todayMystery = getTodayMystery();
-
+        let stepCounter = 1; // Initialize step counter for sequential numbering
+    
         if (todayMystery) {
             // Display today's mystery type
             const mysteryHeader = document.createElement('h2');
@@ -53,37 +53,38 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('No mystery found for today');
             return;
         }
-
+    
         // Render initial steps (Sign of the Cross, Apostles' Creed, etc.)
         rosaryData.rosary.steps.forEach((step) => {
             if (step.name !== "Announce the First Mystery" && !step.name.includes("Repeat Steps")) {
-                addStep(`${step.step}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
+                addStep(`${stepCounter}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
+                stepCounter++; // Increment the step counter
             }
         });
-
+    
         // Render each of the five mysteries in full
         todayMystery.mysteries.forEach((mystery, i) => {
-            addStep(`Mystery ${i + 1}: ${mystery}`, `Reflect on the ${mystery}`);
-
+            addStep(`${stepCounter}. Mystery ${i + 1}: ${mystery}`, `Reflect on the ${mystery}`);
+            stepCounter++;
+    
             // Render "Our Father"
-            addStepFromJson("Our Father");
-
+            addStepFromJson("Our Father", stepCounter++);
+            
             // Render "Ten Hail Marys"
-            addStepFromJson("Ten Hail Marys");
-
+            addStepFromJson("Ten Hail Marys", stepCounter++);
+    
             // Render "Glory Be"
-            addStepFromJson("Glory Be");
-
+            addStepFromJson("Glory Be", stepCounter++);
+    
             // Render "Fatima Prayer"
-            addStepFromJson("Fatima Prayer");
+            addStepFromJson("Fatima Prayer", stepCounter++);
         });
-
+    
         // Render final steps (Hail, Holy Queen, Final Prayer, etc.)
-        addStepFromJson("Hail, Holy Queen");
-        addStepFromJson("Final Prayer");
-        addStepFromJson("Sign of the Cross (Ending)");
+        addStepFromJson("Hail, Holy Queen", stepCounter++);
+        addStepFromJson("Final Prayer", stepCounter++);
+        addStepFromJson("Sign of the Cross (Ending)", stepCounter++);
     }
-
     // Helper function to add a step to the container
     function addStep(title, content) {
         const stepDiv = document.createElement('div');
@@ -101,14 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
         rosaryContainer.appendChild(stepDiv);
     }
 
-    // Helper function to add a step by name from JSON
-    function addStepFromJson(stepName) {
-        const step = rosaryData.rosary.steps.find(s => s.name === stepName);
-        if (step) {
-            addStep(step.name, step.prayer ? step.prayer[currentLanguage] : step.details);
-        }
+// Modified helper function to add a step by name and step number
+function addStepFromJson(stepName, stepNumber) {
+    const step = rosaryData.rosary.steps.find(s => s.name === stepName);
+    if (step) {
+        addStep(`${stepNumber}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
     }
-
+}
     // Language change event for dropdown
     languageSelect.addEventListener('change', (event) => {
         currentLanguage = event.target.value;
