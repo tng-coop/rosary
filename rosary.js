@@ -116,6 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLanguage = 'Japanese';
             languageSelect.value = 'Japanese'; // Update the dropdown for visual indication
             renderRosary();
+        } else if (event.key === 'n') {
+            // Move to the next step
+            if (currentStepIndex < rosaryData.rosary.steps.length - 1) {
+                currentStepIndex++;
+                renderRosary();
+                document.querySelectorAll('.step')[currentStepIndex].focus();
+            }
+        } else if (event.key === 'N') {
+            // Move to the previous step
+            if (currentStepIndex > 0) {
+                currentStepIndex--;
+                renderRosary();
+                document.querySelectorAll('.step')[currentStepIndex].focus();
+            }
         }
     });
 });
