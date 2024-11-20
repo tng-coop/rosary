@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Find the mystery for today
         return rosaryData.rosary.mysteries.find(mystery => mystery.days.includes(today));
     }
+
     function renderRosary() {
         if (!rosaryData || !rosaryData.rosary) {
             console.error('Rosary data is not available');
@@ -75,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Render the five mysteries in full
         todayMystery.mysteries.forEach((mystery, i) => {
-            addStep(`${stepCounter}. Mystery ${i + 1}: ${mystery}`, `Reflect on the ${mystery}`);
+            // Add the mystery title
+            addStep(`${stepCounter}. Mystery ${i + 1}: ${mystery.name}`, mystery.reflection[currentLanguage]);
             stepCounter++;
     
             // Render "Our Father"
@@ -101,8 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addStepFromJson("Sign of the Cross (Ending)", stepCounter++);
     }
     
-    
-    
     // Helper function to add a step to the container
     function addStep(title, content) {
         const stepDiv = document.createElement('div');
@@ -120,13 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
         rosaryContainer.appendChild(stepDiv);
     }
 
-// Modified helper function to add a step by name and step number
-function addStepFromJson(stepName, stepNumber) {
-    const step = rosaryData.rosary.steps.find(s => s.name === stepName);
-    if (step) {
-        addStep(`${stepNumber}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
+    // Modified helper function to add a step by name and step number
+    function addStepFromJson(stepName, stepNumber) {
+        const step = rosaryData.rosary.steps.find(s => s.name === stepName);
+        if (step) {
+            addStep(`${stepNumber}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
+        }
     }
-}
+
     // Language change event for dropdown
     languageSelect.addEventListener('change', (event) => {
         currentLanguage = event.target.value;
