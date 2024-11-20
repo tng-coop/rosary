@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageSelect = document.getElementById('language');
     let currentStepIndex = 0;
     let currentLanguage = 'English';
+    const availableLanguages = ['English', 'Japanese'];; // Array to store available languages
 
     // Fetch the JSON data from the rosary.json file
     fetch('rosary.json')
@@ -157,6 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLanguage = 'Japanese';
             languageSelect.value = 'Japanese'; // Update the dropdown for visual indication
             renderRosary();
+        } else if (event.key.toUpperCase() === 'L') {
+            if (availableLanguages.length > 0) {
+                const currentIndex = availableLanguages.indexOf(currentLanguage);
+                const nextIndex = (currentIndex + 1) % availableLanguages.length;
+                currentLanguage = availableLanguages[nextIndex];
+                languageSelect.value = currentLanguage;
+                renderRosary();
+            }
         } else if (event.key === 'n') {
             // Move to the next step
             if (currentStepIndex < document.querySelectorAll('.step').length - 1) {
