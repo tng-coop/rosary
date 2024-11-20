@@ -115,44 +115,164 @@
           "type": "Joyful Mysteries",
           "days": ["Monday", "Saturday"],
           "mysteries": [
-            "The Annunciation",
-            "The Visitation",
-            "The Nativity",
-            "The Presentation in the Temple",
-            "The Finding of Jesus in the Temple"
+            {
+              "name": "The Annunciation",
+              "reflection": {
+                "English": "Mary's acceptance of God's will inspires us to respond to divine invitations with faith. 'Behold, I am the handmaid of the Lord; let it be to me according to your word.' (Luke 1:38)",
+                "Japanese": "マリアが神の御心を受け入れたことは、私たちが信仰をもって神の招きに応えるよう教えてくれます。「見よ、私は主のはしためです。あなたのお言葉どおり、この身になりますように。」（ルカ1:38）"
+              }
+            },
+            {
+              "name": "The Visitation",
+              "reflection": {
+                "English": "Mary’s visit to Elizabeth reminds us to reach out to others with joy and love. 'And Elizabeth was filled with the Holy Spirit and exclaimed with a loud cry, \"Blessed are you among women.\"' (Luke 1:41-42)",
+                "Japanese": "マリアがエリザベトを訪ねたことは、喜びと愛をもって他者に手を差し伸べることを思い起こさせます。「エリザベトは聖霊に満たされ、大声で叫びました。『あなたは女のうちで祝福され』。」（ルカ1:41-42）"
+              }
+            },
+            {
+              "name": "The Nativity",
+              "reflection": {
+                "English": "The humble birth of Jesus encourages us to cherish simplicity and find divine joy in small moments. 'For today in the city of David a savior has been born for you.' (Luke 2:11)",
+                "Japanese": "イエスの質素な誕生は、質素を大切にし、小さな瞬間に神の喜びを見出すよう促します。「今日、ダビデの町で、あなたがたのために救い主が生まれた。」（ルカ2:11）"
+              }
+            },
+            {
+              "name": "The Presentation in the Temple",
+              "reflection": {
+                "English": "Mary and Joseph's dedication of Jesus teaches us about offering our lives to God. 'Simeon took him into his arms and blessed God.' (Luke 2:28)",
+                "Japanese": "イエスをささげたマリアとヨセフは、私たちの人生を神にささげることを教えてくれます。「シメオンは幼子を腕に抱き、神をたたえました。」（ルカ2:28）"
+              }
+            },
+            {
+              "name": "The Finding of Jesus in the Temple",
+              "reflection": {
+                "English": "The discovery of Jesus among the teachers shows us to always seek wisdom in God. 'Did you not know that I must be in my Father’s house?' (Luke 2:49)",
+                "Japanese": "教師たちの中で見つかったイエスは、私たちに神に知恵を求めることを教えてくれます。「どうしてわたしを捜したのですか。わたしは自分の父の家にいるべきことを知らなかったのですか。」（ルカ2:49）"
+              }
+            }
           ]
         },
         {
           "type": "Sorrowful Mysteries",
           "days": ["Tuesday", "Friday"],
           "mysteries": [
-            "The Agony in the Garden",
-            "The Scourging at the Pillar",
-            "The Crowning with Thorns",
-            "The Carrying of the Cross",
-            "The Crucifixion"
+            {
+              "name": "The Agony in the Garden",
+              "reflection": {
+                "English": "Jesus' suffering in the garden calls us to stay faithful even in times of trial. 'Father, if you are willing, remove this cup from me; yet not my will, but yours be done.' (Luke 22:42)",
+                "Japanese": "園でのイエスの苦しみは、試練のときにも忠実であるように私たちに求めています。「父よ、御心ならば、この杯をわたしから取り除けてください。しかし、わたしの願いではなく、御心のままに行ってください。」（ルカ22:42）"
+              }
+            },
+            {
+              "name": "The Scourging at the Pillar",
+              "reflection": {
+                "English": "Jesus’ scourging reminds us of the sacrifice and suffering endured for our sins. 'Then Pilate took Jesus and had him flogged.' (John 19:1)",
+                "Japanese": "柱での鞭打ちは、私たちの罪のために耐えられた犠牲と苦しみを思い起こさせます。「それからピラトはイエスを捕らえ、鞭で打たせた。」（ヨハネ19:1）"
+              }
+            },
+            {
+              "name": "The Crowning with Thorns",
+              "reflection": {
+                "English": "The crown of thorns teaches humility and enduring mockery for truth. 'They twisted together a crown of thorns and set it on his head.' (Matthew 27:29)",
+                "Japanese": "茨の冠は、真理のために侮辱に耐える謙遜を教えてくれます。「彼らは茨で冠を編んでイエスの頭にかぶせた。」（マタイ27:29）"
+              }
+            },
+            {
+              "name": "The Carrying of the Cross",
+              "reflection": {
+                "English": "Carrying the cross exemplifies the weight of sacrifice for others. 'They took Jesus, and he went out, bearing his own cross.' (John 19:17)",
+                "Japanese": "十字架を背負うことは、他者のための犠牲の重さを示しています。「彼らはイエスを引き取り、イエスは自分の十字架を背負って出て行かれた。」（ヨハネ19:17）"
+              }
+            },
+            {
+              "name": "The Crucifixion",
+              "reflection": {
+                "English": "Jesus' death on the cross is the ultimate act of love and redemption. 'Father, into your hands I commit my spirit.' (Luke 23:46)",
+                "Japanese": "十字架でのイエスの死は、愛と贖いの究極の行為です。「父よ、わたしの霊を御手にゆだねます。」（ルカ23:46）"
+              }
+            }
           ]
         },
         {
           "type": "Glorious Mysteries",
           "days": ["Wednesday", "Sunday"],
           "mysteries": [
-            "The Resurrection",
-            "The Ascension",
-            "The Descent of the Holy Spirit",
-            "The Assumption of Mary",
-            "The Coronation of Mary"
+            {
+              "name": "The Resurrection",
+              "reflection": {
+                "English": "The resurrection fills us with hope for eternal life. 'He is not here; he has risen!' (Luke 24:6)",
+                "Japanese": "復活は私たちに永遠の命への希望を与えてくれます。「ここにはいません。復活されました。」（ルカ24:6）"
+              }
+            },
+            {
+              "name": "The Ascension",
+              "reflection": {
+                "English": "Jesus’ ascension inspires us to look forward to heavenly life. 'He was taken up into heaven and sat at the right hand of God.' (Mark 16:19)",
+                "Japanese": "昇天は、天の命を待ち望むように私たちを励まします。「イエスは天に上げられ、神の右の座に着かれた。」（マルコ16:19）"
+              }
+            },
+            {
+              "name": "The Descent of the Holy Spirit",
+              "reflection": {
+                "English": "The Holy Spirit’s coming empowers us to spread the faith. 'And they were all filled with the Holy Spirit.' (Acts 2:4)",
+                "Japanese": "聖霊の降臨は、信仰を広める力を与えてくれます。「彼らはみな聖霊に満たされた。」（使徒2:4）"
+              }
+            },
+            {
+              "name": "The Assumption of Mary",
+              "reflection": {
+                "English": "Mary’s assumption reminds us of her special role and heavenly reward. 'Blessed are you among women.' (Luke 1:42)",
+                "Japanese": "マリアの被昇天は、彼女の特別な役割と天上の報いを思い起こさせます。「あなたは女のうちで祝福されています。」（ルカ1:42）"
+              }
+            },
+            {
+              "name": "The Coronation of Mary",
+              "reflection": {
+                "English": "Mary’s coronation as Queen of Heaven calls us to honor her devotion. 'A great sign appeared in heaven: a woman clothed with the sun.' (Revelation 12:1)",
+                "Japanese": "天の女王としてのマリアの戴冠は、彼女の献身を敬うように私たちに呼びかけます。「大いなるしるしが天に現れました。太陽を身にまとった女。」（黙示録12:1）"
+              }
+            }
           ]
         },
         {
           "type": "Luminous Mysteries",
           "days": ["Thursday"],
           "mysteries": [
-            "The Baptism of Jesus in the Jordan",
-            "The Wedding at Cana",
-            "The Proclamation of the Kingdom",
-            "The Transfiguration",
-            "The Institution of the Eucharist"
+            {
+              "name": "The Baptism of Jesus in the Jordan",
+              "reflection": {
+                "English": "Jesus’ baptism reveals Him as God’s beloved Son, inviting us to renew our baptismal promises. 'This is my Son, whom I love; with him I am well pleased.' (Matthew 3:17)",
+                "Japanese": "イエスの洗礼は、神の愛される御子としての姿を示し、洗礼の約束を新たにするよう促します。「これはわたしの愛する子。わたしはこれを喜ぶ。」（マタイ3:17）"
+              }
+            },
+            {
+              "name": "The Wedding at Cana",
+              "reflection": {
+                "English": "The miracle at Cana reminds us that God works through the intercession of Mary. 'Do whatever he tells you.' (John 2:5)",
+                "Japanese": "カナの婚宴の奇跡は、神がマリアの取り次ぎによって働かれることを思い出させます。「あの方が言われることは何でもしてください。」（ヨハネ2:5）"
+              }
+            },
+            {
+              "name": "The Proclamation of the Kingdom",
+              "reflection": {
+                "English": "Jesus’ preaching of God’s kingdom calls us to conversion. 'Repent, for the kingdom of heaven has come near.' (Matthew 4:17)",
+                "Japanese": "神の国の宣言は、悔い改めを私たちに促します。「悔い改めなさい。天の国が近づいたから。」（マタイ4:17）"
+              }
+            },
+            {
+              "name": "The Transfiguration",
+              "reflection": {
+                "English": "The transfiguration shows us Christ’s divine glory. 'His face shone like the sun.' (Matthew 17:2)",
+                "Japanese": "変容は、キリストの神性の栄光を示しています。「その顔は太陽のように輝いた。」（マタイ17:2）"
+              }
+            },
+            {
+              "name": "The Institution of the Eucharist",
+              "reflection": {
+                "English": "The Eucharist calls us to unity and participation in the mystery of Christ. 'Take and eat; this is my body.' (Matthew 26:26)",
+                "Japanese": "聖体は、キリストの秘跡において一つとなり、参加するよう呼びかけます。「取って食べなさい。これは私の体です。」（マタイ26:26）"
+              }
+            }
           ]
         }
       ]
