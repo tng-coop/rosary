@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
+        // Preserve the current step index
+        const previousStepIndex = currentStepIndex;
+    
         rosaryContainer.innerHTML = '';
         const todayMystery = getTodayMystery();
         let stepCounter = 1; // Initialize step counter for sequential numbering
@@ -54,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
-        // Render initial steps (Sign of the Cross, Apostles' Creed, Three Hail Marys, Glory Be)
+        // Render initial steps
         rosaryData.rosary.steps.forEach((step) => {
             if (
                 step.name !== "Announce the First Mystery" &&
@@ -66,41 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 step.name !== "Sign of the Cross (Ending)" &&
                 !step.name.includes("Repeat Steps")
             ) {
-                // Only allow one "Glory Be" before the first mystery
                 if (step.name === "Glory Be" && stepCounter > 4) return;
-    
                 addStep(`${stepCounter}. ${step.name}`, step.prayer ? step.prayer[currentLanguage] : step.details);
-                stepCounter++; // Increment the step counter
+                stepCounter++;
             }
         });
     
         // Render the five mysteries in full
         todayMystery.mysteries.forEach((mystery, i) => {
-            // Add the mystery title
             addStep(`${stepCounter}. Mystery ${i + 1}: ${mystery.name}`, mystery.reflection[currentLanguage]);
             stepCounter++;
     
-            // Render "Our Father"
             addStepFromJson("Our Father", stepCounter++);
-    
-            // Render "Ten Hail Marys"
+            
             const hailMaryStep = rosaryData.rosary.steps.find(s => s.name === "Ten Hail Marys");
             if (hailMaryStep) {
                 addStep(`${stepCounter}. ${hailMaryStep.name}`, hailMaryStep.prayer[currentLanguage]);
                 stepCounter++;
             }
     
-            // Render "Glory Be"
             addStepFromJson("Glory Be", stepCounter++);
-    
-            // Render "Fatima Prayer"
             addStepFromJson("Fatima Prayer", stepCounter++);
         });
     
-        // Render final prayers (Hail, Holy Queen, Final Prayer, Sign of the Cross (Ending))
+        // Render final prayers
         addStepFromJson("Hail, Holy Queen", stepCounter++);
         addStepFromJson("Final Prayer", stepCounter++);
         addStepFromJson("Sign of the Cross (Ending)", stepCounter++);
+    
+        // Restore focus to the previous step
+        const stepElements = document.querySelectorAll('.step');
+        if (stepElements.length > 0 && previousStepIndex < stepElements.length) {
+            stepElements[previousStepIndex].focus();
+        }
     }
     
     // Helper function to add a step to the container
