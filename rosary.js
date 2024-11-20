@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keyboard navigation for highlighting and language change
     document.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowDown') {
-            if (currentStepIndex < rosaryData.rosary.steps.length - 1) {
+            if (currentStepIndex < document.querySelectorAll('.step').length - 1) {
                 currentStepIndex++;
                 renderRosary();
                 document.querySelectorAll('.step')[currentStepIndex].focus();
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderRosary();
         } else if (event.key === 'n') {
             // Move to the next step
-            if (currentStepIndex < rosaryData.rosary.steps.length - 1) {
+            if (currentStepIndex < document.querySelectorAll('.step').length - 1) {
                 currentStepIndex++;
                 renderRosary();
                 document.querySelectorAll('.step')[currentStepIndex].focus();
