@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageSelect = document.getElementById('language');
     let currentStepIndex = 0;
     let currentLanguage = 'English';
-    const availableLanguages = ['English', 'Japanese'];; // Array to store available languages
+    const availableLanguages = ['English', 'Japanese'];
 
-    // Fetch the JSON data from the rosary.json file
     fetch('rosary.json')
         .then(response => {
             if (!response.ok) {
@@ -16,22 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             rosaryData = data;
-            renderRosary(); // Render the rosary after the data is loaded
+            renderRosary();
         })
         .catch(error => {
             console.error('Error fetching the JSON data:', error);
         });
 
-    // Helper function to detect the current day and get the mystery for today
     function getTodayMystery() {
         if (!rosaryData || !rosaryData.rosary || !rosaryData.rosary.mysteries) {
             console.error('Mysteries data is missing or undefined');
             return null;
         }
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const today = days[new Date().getDay()];
-
-        // Find the mystery for today
         return rosaryData.rosary.mysteries.find(mystery => mystery.days.includes(today));
     }
 
@@ -40,25 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Rosary data is not available');
             return;
         }
-    
-        // Preserve the current step index
         const previousStepIndex = currentStepIndex;
-    
         rosaryContainer.innerHTML = '';
         const todayMystery = getTodayMystery();
-        let stepCounter = 1; // Initialize step counter for sequential numbering
-    
-        if (todayMystery) {
-            // Display today's mystery type
-            const mysteryHeader = document.createElement('h2');
-            mysteryHeader.textContent = `Today's Mystery: ${todayMystery.type}`;
-            rosaryContainer.appendChild(mysteryHeader);
-        } else {
+        let stepCounter = 1;
+        
+        if (!todayMystery) {
             console.error('No mystery found for today');
             return;
         }
-    
-        // Render initial steps
+        const mysteryHeader = document.createElement('h2');
+        mysteryHeader.textContent = `Today's Mystery: ${todayMystery.type}`;
+        rosaryContainer.appendChild(mysteryHeader);
+
         rosaryData.rosary.steps.forEach((step) => {
             if (
                 step.name !== "Announce the First Mystery" &&
@@ -75,54 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 stepCounter++;
             }
         });
-    
-        // Render the five mysteries in full
+
         todayMystery.mysteries.forEach((mystery, i) => {
             addStep(`${stepCounter}. Mystery ${i + 1}: ${mystery.name}`, mystery.reflection[currentLanguage]);
             stepCounter++;
-    
             addStepFromJson("Our Father", stepCounter++);
-            
             const hailMaryStep = rosaryData.rosary.steps.find(s => s.name === "Ten Hail Marys");
             if (hailMaryStep) {
                 addStep(`${stepCounter}. ${hailMaryStep.name}`, hailMaryStep.prayer[currentLanguage]);
                 stepCounter++;
             }
-    
             addStepFromJson("Glory Be", stepCounter++);
             addStepFromJson("Fatima Prayer", stepCounter++);
         });
-    
-        // Render final prayers
+
         addStepFromJson("Hail, Holy Queen", stepCounter++);
         addStepFromJson("Final Prayer", stepCounter++);
         addStepFromJson("Sign of the Cross (Ending)", stepCounter++);
-    
-        // Restore focus to the previous step
+
         const stepElements = document.querySelectorAll('.step');
         if (stepElements.length > 0 && previousStepIndex < stepElements.length) {
             stepElements[previousStepIndex].focus();
         }
     }
-    
-    // Helper function to add a step to the container
+
     function addStep(title, content) {
         const stepDiv = document.createElement('div');
         stepDiv.classList.add('step');
         stepDiv.setAttribute('tabindex', '0');
-
         const stepTitle = document.createElement('h3');
         stepTitle.textContent = title;
         stepDiv.appendChild(stepTitle);
-
         const stepContent = document.createElement('p');
         stepContent.textContent = content;
         stepDiv.appendChild(stepContent);
-
         rosaryContainer.appendChild(stepDiv);
     }
 
-    // Modified helper function to add a step by name and step number
     function addStepFromJson(stepName, stepNumber) {
         const step = rosaryData.rosary.steps.find(s => s.name === stepName);
         if (step) {
@@ -130,21 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Language change event for dropdown
     languageSelect.addEventListener('change', (event) => {
         currentLanguage = event.target.value;
         renderRosary();
     });
 
-    // Keyboard navigation for highlighting and language change
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowDown') {
-            if (currentStepIndex < document.querySelectorAll('.step').length - 1) {
+        const steps = document.querySelectorAll('.step');
+        if (event.key === 'ArrowDown' || event.key === 'n') {
+            if (currentStepIndex < steps.length - 1) {
                 currentStepIndex++;
                 renderRosary();
                 document.querySelectorAll('.step')[currentStepIndex].focus();
             }
-        } else if (event.key === 'ArrowUp') {
+        } else if (event.key === 'ArrowUp' || event.key === 'N') {
             if (currentStepIndex > 0) {
                 currentStepIndex--;
                 renderRosary();
@@ -152,11 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (event.key.toUpperCase() === 'E') {
             currentLanguage = 'English';
-            languageSelect.value = 'English'; // Update the dropdown for visual indication
+            languageSelect.value = 'English';
             renderRosary();
         } else if (event.key.toUpperCase() === 'J') {
             currentLanguage = 'Japanese';
-            languageSelect.value = 'Japanese'; // Update the dropdown for visual indication
+            languageSelect.value = 'Japanese';
             renderRosary();
         } else if (event.key.toUpperCase() === 'L') {
             if (availableLanguages.length > 0) {
@@ -165,20 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLanguage = availableLanguages[nextIndex];
                 languageSelect.value = currentLanguage;
                 renderRosary();
-            }
-        } else if (event.key === 'n') {
-            // Move to the next step
-            if (currentStepIndex < document.querySelectorAll('.step').length - 1) {
-                currentStepIndex++;
-                renderRosary();
-                document.querySelectorAll('.step')[currentStepIndex].focus();
-            }
-        } else if (event.key === 'N') {
-            // Move to the previous step
-            if (currentStepIndex > 0) {
-                currentStepIndex--;
-                renderRosary();
-                document.querySelectorAll('.step')[currentStepIndex].focus();
             }
         }
     });
