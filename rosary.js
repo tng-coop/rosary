@@ -62,15 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // 7. Add standard opening steps
         //    (skips certain steps that will be inserted later, or repeats)
         rosaryData.rosary.steps.forEach(step => {
-            const skipList = [
-                "Announce the First Mystery",
-                "Ten Hail Marys",
-                "Our Father",
-                "Fatima Prayer",
-                "Hail, Holy Queen",
-                "Final Prayer",
-                "Sign of the Cross (Ending)"
-            ];
+        const skipList = [
+            "Announce the First Mystery",
+            "Ten Hail Marys",
+            "Fatima Prayer",
+            "Hail, Holy Queen",
+            "Final Prayer",
+            "Sign of the Cross (Ending)"
+        ];
             
             // Skip if it belongs to the skipList or if it has "Repeat Steps" in its name
             if (skipList.includes(step.name) || step.name.includes("Repeat Steps")) return;
